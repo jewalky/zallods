@@ -7,12 +7,9 @@
 
 StringList g_argv;
 
-int main(int argc, char* argv[])
+int _main()
 {
     C_Init();
-
-    for(int i = 0; i < argc; i++)
-        g_argv.push_back(argv[i]);
 
     if(!V_Init()) return 1;
     if(!F_Init()) return 1;
@@ -20,7 +17,16 @@ int main(int argc, char* argv[])
     G_MainLoop();
 
     V_Quit();
+
     return 0;
+}
+
+int main(int argc, char* argv[])
+{
+    for(int i = 0; i < argc; i++)
+        g_argv.push_back(argv[i]);
+
+    return _main();
 }
 
 void Abort()

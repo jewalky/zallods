@@ -3,7 +3,8 @@
 #include "c_main.h"
 #include "r_main.h"
 #include "v_main.h"
-#include "f_16a.h"
+#include "r_mouse.h"
+#include "f_bmp.h"
 
 bool G_Init()
 {
@@ -17,7 +18,17 @@ void G_Quit()
 
 void G_MainLoop()
 {
+    LoadCursors();
+
     bool gml_close = false;
+    static Image* img = NULL;
+    if(!img) img = new Image("locale/ru/graphics/mainmenu/menu_.bmp");
+
+    R_SetTarget(rt_main);
+    R_FillRect(r_clip, 0, 0, 0, 255); // clear the view just in case
+    img->display(0, 0);
+    R_FullUpdate();
+
     while(!gml_close)
     {
         SDL_Event e;
@@ -33,15 +44,11 @@ void G_MainLoop()
                 gml_close = true;
         }
 
-        R_SetTarget(rt_back);
-        R_FillRect(r_clip, 0, 0, 0, 255); // clear the view just in case
+        R_SetTarget(rt_main);
 
         // do something
-        static Sprite_16A* spr = NULL;
-        if(!spr) spr = new Sprite_16A("graphics/cursors/default/sprites.16a");
-        spr->display(32, 32, 0);
 
-        R_FullBlit();
+        R_Mouse();
 
         SDL_Delay(1);
     }

@@ -14,3 +14,7 @@
 
 # Resources
 *.res
+
+# Compiled binaries
+bin
+obj

@@ -29,3 +29,8 @@ uint16_t Sprite::getHeight(uint32_t num)
     if(num >= mFrames.size()) return 0;
     return mFrames[num].height & 0xFFFF;
 }
+
+uint32_t Sprite::length()
+{
+    return mFrames.size();
+}

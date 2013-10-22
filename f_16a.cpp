@@ -111,11 +111,6 @@ void Sprite_16A::displayColored(int16_t x, int16_t y, uint32_t num, uint8_t r, u
     uint16_t rw = getWidth(num);
     uint16_t rh = getHeight(num);
 
-    if(rix < 0) rix = 0;
-    if(riy < 0) riy = 0;
-    if(rix+rw > getWidth(num)) rw -= (rix+rw)-getWidth(num);
-    if(riy+rh > getHeight(num)) rh -= (riy+rh)-getHeight(num);
-
     if(rx > r_clip.x+r_clip.w) return;
     if(ry > r_clip.y+r_clip.h) return;
     if(rx+rw < 0 ||
@@ -144,6 +139,9 @@ void Sprite_16A::displayColored(int16_t x, int16_t y, uint32_t num, uint8_t r, u
     uint32_t* upixels = (uint32_t*)r_target->pixels;
     uint16_t* pixels = (uint16_t*)mFrames[num].data;
 
+    uint32_t addpre_in = rix;
+    uint32_t addpost_in = getWidth(num) - (rix+rw);
+
     uint32_t addpre = rx;
     uint32_t addpost = r_target->w - (rx+rw);
 
@@ -151,6 +149,7 @@ void Sprite_16A::displayColored(int16_t x, int16_t y, uint32_t num, uint8_t r, u
     upixels += ry * r_target->w;
     for(uint32_t y = 0; y < rh; y++)
     {
+        pixels += addpre_in;
         upixels += addpre;
         for(uint32_t x = 0; x < rw; x++)
         {
@@ -192,5 +191,6 @@ void Sprite_16A::displayColored(int16_t x, int16_t y, uint32_t num, uint8_t r, u
             *upixels++ = iv;
         }
         upixels += addpost;
+        pixels += addpost_in;
     }
 }

@@ -306,3 +306,139 @@
 	"f_sprite.h"
 	"String.h"
 
+1382454450 source:w:\dev\zallods\string.cpp
+	"String.h"
+	<cstring>
+	<cstdarg>
+	<cstdio>
+	<cstdlib>
+
+1382454450 w:\dev\zallods\string.h
+	<string>
+	<vector>
+
+1382457318 source:w:\dev\zallods\c_main.cpp
+	"c_main.h"
+	"main.h"
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<cstdarg>
+	<windows.h>
+
+1382454450 w:\dev\zallods\c_main.h
+	"String.h"
+
+1382454450 w:\dev\zallods\main.h
+	"String.h"
+
+1382461837 source:w:\dev\zallods\f_16a.cpp
+	"f_16a.h"
+	"v_main.h"
+	"c_main.h"
+	"f_file.h"
+
+1382454450 w:\dev\zallods\f_16a.h
+	"f_sprite.h"
+	"String.h"
+
+1382461143 w:\dev\zallods\f_sprite.h
+	<vector>
+	<stdint.h>
+
+1382457495 w:\dev\zallods\v_main.h
+	<SDL/SDL.h>
+
+1382454450 w:\dev\zallods\f_file.h
+	"String.h"
+	<stdint.h>
+	<vector>
+	<fstream>
+
+1382456271 source:w:\dev\zallods\f_bmp.cpp
+	"f_bmp.h"
+	"f_file.h"
+	"c_main.h"
+	"v_main.h"
+
+1382454450 w:\dev\zallods\f_bmp.h
+	<SDL/SDL.h>
+	"String.h"
+	<stdint.h>
+
+1382454450 source:w:\dev\zallods\f_file.cpp
+	"f_file.h"
+	"utils.h"
+
+1382454450 w:\dev\zallods\utils.h
+	<dirent.h>
+	<stdint.h>
+	"String.h"
+
+1382454450 source:w:\dev\zallods\f_main.cpp
+	"f_main.h"
+	"f_file.h"
+	"c_main.h"
+
+1382454450 w:\dev\zallods\f_main.h
+
+1382461153 source:w:\dev\zallods\f_sprite.cpp
+	"f_sprite.h"
+	<cstdlib>
+
+1382457448 source:w:\dev\zallods\g_event.cpp
+	"g_event.h"
+	"c_main.h"
+
+1382454450 w:\dev\zallods\g_event.h
+	<list>
+	<SDL/SDL.h>
+
+1382460908 source:w:\dev\zallods\g_main.cpp
+	"g_main.h"
+	"g_event.h"
+	"c_main.h"
+	"r_main.h"
+	"v_main.h"
+	"r_mouse.h"
+	"f_bmp.h"
+
+1382454450 w:\dev\zallods\g_main.h
+
+1382459439 w:\dev\zallods\r_main.h
+	<SDL/SDL.h>
+	<stdint.h>
+
+1382457088 source:w:\dev\zallods\main.cpp
+	<SDL/SDL.h>
+	"String.h"
+	"v_main.h"
+	"c_main.h"
+	"g_main.h"
+	"f_main.h"
+
+1382459434 source:w:\dev\zallods\r_main.cpp
+	"r_main.h"
+	"v_main.h"
+
+1382461963 source:w:\dev\zallods\r_mouse.cpp
+	"r_mouse.h"
+	"g_event.h"
+	"f_16a.h"
+	"v_main.h"
+	"r_main.h"
+	"c_main.h"
+
+1382460916 w:\dev\zallods\r_mouse.h
+	"f_sprite.h"
+	"String.h"
+
+1382454450 source:w:\dev\zallods\utils.cpp
+	<fstream>
+	"utils.h"
+
+1382461932 source:w:\dev\zallods\v_main.cpp
+	"v_main.h"
+	"main.h"
+	"c_main.h"
+
