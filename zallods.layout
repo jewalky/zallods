@@ -1,13 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="Debug" />
-	<File name="String.cpp" open="1" top="0" tabpos="5">
+	<ActiveTarget name="Debug (Win32)" />
+	<File name="String.cpp" open="1" top="0" tabpos="3">
 		<Cursor position="204" topLine="0" />
 	</File>
-	<File name="String.h" open="1" top="1" tabpos="4">
-		<Cursor position="468" topLine="0" />
+	<File name="String.h" open="1" top="0" tabpos="2">
+		<Cursor position="631" topLine="0" />
+	</File>
+	<File name="c_main.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="754" topLine="15" />
+	</File>
+	<File name="f_16a.cpp" open="1" top="0" tabpos="13">
+		<Cursor position="3220" topLine="102" />
+	</File>
+	<File name="f_bmp.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="2313" topLine="78" />
+	</File>
+	<File name="f_main.cpp" open="1" top="0" tabpos="14">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="f_sprite.cpp" open="1" top="0" tabpos="17">
+		<Cursor position="584" topLine="0" />
+	</File>
+	<File name="f_sprite.h" open="1" top="0" tabpos="16">
+		<Cursor position="576" topLine="0" />
+	</File>
+	<File name="g_event.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="336" topLine="159" />
+	</File>
+	<File name="g_main.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="517" topLine="0" />
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="169" topLine="0" />
+		<Cursor position="124" topLine="1" />
+	</File>
+	<File name="r_main.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="2226" topLine="71" />
+	</File>
+	<File name="r_main.h" open="1" top="0" tabpos="10">
+		<Cursor position="336" topLine="0" />
+	</File>
+	<File name="r_mouse.cpp" open="1" top="1" tabpos="12">
+		<Cursor position="1467" topLine="47" />
+	</File>
+	<File name="r_mouse.h" open="1" top="0" tabpos="15">
+		<Cursor position="590" topLine="0" />
+	</File>
+	<File name="v_main.cpp" open="1" top="0" tabpos="11">
+		<Cursor position="235" topLine="33" />
+	</File>
+	<File name="v_main.h" open="1" top="0" tabpos="5">
+		<Cursor position="269" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

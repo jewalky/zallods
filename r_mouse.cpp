@@ -1,6 +1,8 @@
 #include "r_mouse.h"
 #include "g_event.h"
+#include "f_256.h"
 #include "f_16a.h"
+#include "f_16.h"
 #include "v_main.h"
 #include "r_main.h"
 #include "c_main.h"
@@ -26,11 +28,11 @@ MouseCursor::MouseCursor(String filename, int16_t x, int16_t y, uint32_t delay)
     }
     else if(sX == "16")
     {
-        sprite = NULL;
+        sprite = new Sprite_16(filename);
     }
     else if(sX == "256")
     {
-        sprite = NULL;
+        sprite = new Sprite_256(filename);
     }
 
     this->x = x;
@@ -66,7 +68,7 @@ void LoadCursors()
     mc_wait = new MouseCursor("graphics/cursors/wait/sprites.16a", 16, 16, 40);
     mc_select = new MouseCursor("graphics/cursors/select/sprites.16a", 4, 4, 0);
 
-    R_SetMouse(mc_wait);
+    R_SetMouse(mc_default);
 }
 
 void R_SetMouse(MouseCursor* cur)

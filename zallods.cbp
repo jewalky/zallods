@@ -75,8 +75,12 @@
 		<Unit filename="String.h" />
 		<Unit filename="c_main.cpp" />
 		<Unit filename="c_main.h" />
+		<Unit filename="f_16.cpp" />
+		<Unit filename="f_16.h" />
 		<Unit filename="f_16a.cpp" />
 		<Unit filename="f_16a.h" />
+		<Unit filename="f_256.cpp" />
+		<Unit filename="f_256.h" />
 		<Unit filename="f_bmp.cpp" />
 		<Unit filename="f_bmp.h" />
 		<Unit filename="f_file.cpp" />

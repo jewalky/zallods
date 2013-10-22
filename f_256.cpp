@@ -1,16 +1,16 @@
-#include "f_16a.h"
+#include "f_256.h"
 #include "v_main.h"
 #include "c_main.h"
 #include "f_file.h"
 
-Sprite_16A::Sprite_16A(String filename)
+Sprite_256::Sprite_256(String filename)
 {
     if(!rt_main)
-        C_Fatal("Sprite_16A::Sprite_16A: Couldn't load \"%s\" (video not initialized yet).\n", filename.c_str());
+        C_Fatal("Sprite_256::Sprite_256: Couldn't load \"%s\" (video not initialized yet).\n", filename.c_str());
 
     File f;
     if(!f.open(filename) || !f.length())
-        C_Fatal("Sprite_16A::Sprite_16A: Couldn't open \"%s\".\n", filename.c_str());
+        C_Fatal("Sprite_256::Sprite_256: Couldn't open \"%s\".\n", filename.c_str());
 
     f.seek(f.length()-4);
     uint32_t cnt = 0;
@@ -30,7 +30,7 @@ Sprite_16A::Sprite_16A(String filename)
         f.read(&isz, 4);
 
         if(!isz)
-            C_Fatal("Sprite_16A::Sprite_16A: Size of frame %u is NULL.\n", i);
+            C_Fatal("Sprite_256::Sprite_256: Size of frame %u is NULL.\n", i);
 
         uint8_t* data = new uint8_t[isz];
         f.read(data, isz);
@@ -46,36 +46,20 @@ Sprite_16A::Sprite_16A(String filename)
         while(pos < isz)
         {
             uint8_t fbyte = *pixels++;
-            uint8_t sbyte = *pixels++;
+            pos++;
 
-            if(sbyte)
+            if(fbyte & 0xC0)
             {
-                if(sbyte == 0x40)
-                {
-                    pos += 2;
-                    upixels += fbyte * iw;
-                }
-                else
-                {
-                    pos += 2;
-                    upixels += fbyte;
-                }
+                if((fbyte & 0xC0) == 0x40)
+                    upixels += iw * (fbyte & 0xBF);
+                else upixels += (fbyte & 0x7F);
             }
-            else
+            else if(fbyte)
             {
                 for(int i = 0; i < fbyte; i++)
-                {
-                    uint16_t ss = *(uint16_t*)(pixels+i*2);
-                    uint8_t alpha = (((ss & 0xFF00) >> 9) & 0x0F)+(((ss & 0xFF00) >> 5) & 0xF0);
-                    uint8_t color = ((ss & 0xFF00) >> 1)+((ss & 0x00FF) >> 1);
-                    ss = alpha;
-                    ss <<= 8; ss |= color;
-                    upixels[i] = ss;
-                }
-
-                pos += 2 * fbyte + 2;
-                upixels += fbyte;
-                pixels += 2 * fbyte;
+                    *upixels++ = 0xFF00 | pixels[i];
+                pixels += fbyte;
+                pos += fbyte;
             }
         }
 
@@ -90,12 +74,12 @@ Sprite_16A::Sprite_16A(String filename)
     f.close();
 }
 
-void Sprite_16A::display(int16_t x, int16_t y, uint32_t num)
+void Sprite_256::display(int16_t x, int16_t y, uint32_t num)
 {
     displayColored(x, y, num, 255, 255, 255, 255);
 }
 
-void Sprite_16A::displayColored(int16_t x, int16_t y, uint32_t num, uint8_t cr, uint8_t cg, uint8_t cb, uint8_t ca)
+void Sprite_256::displayColored(int16_t x, int16_t y, uint32_t num, uint8_t cr, uint8_t cg, uint8_t cb, uint8_t ca)
 {
     if(num >= mFrames.size()) return;
     if(!r_target) return;
@@ -152,6 +136,15 @@ void Sprite_16A::displayColored(int16_t x, int16_t y, uint32_t num, uint8_t cr, 
             uint16_t siv = *pixels++;
 
             uint8_t a = (siv & 0xFF00) >> 8;
+
+            if(!a)
+            {
+                upixels++;
+                continue;
+            }
+
+            a = ca;
+
             uint8_t palColor = (siv & 0xFF);
             uint32_t iv = mPalette[palColor];
 
@@ -165,8 +158,6 @@ void Sprite_16A::displayColored(int16_t x, int16_t y, uint32_t num, uint8_t cr, 
                 g = (g == 255 ? cg : (uint8_t)((float)g * ((float)cg / 255.0)));
             if(cb < 255)
                 b = (b == 255 ? cb : (uint8_t)((float)b * ((float)cb / 255.0)));
-            if(ca < 255)
-                a = (a == 255 ? ca : (uint8_t)((float)a * ((float)ca / 255.0)));
 
             uint32_t riv = *upixels;
 
