@@ -37,7 +37,30 @@
 		</Linker>
 		<Unit filename="String.cpp" />
 		<Unit filename="String.h" />
+		<Unit filename="c_main.cpp" />
+		<Unit filename="c_main.h" />
+		<Unit filename="f_16a.cpp" />
+		<Unit filename="f_16a.h" />
+		<Unit filename="f_bmp.cpp" />
+		<Unit filename="f_bmp.h" />
+		<Unit filename="f_file.cpp" />
+		<Unit filename="f_file.h" />
+		<Unit filename="f_main.cpp" />
+		<Unit filename="f_main.h" />
+		<Unit filename="f_sprite.cpp" />
+		<Unit filename="f_sprite.h" />
+		<Unit filename="g_event.cpp" />
+		<Unit filename="g_event.h" />
+		<Unit filename="g_main.cpp" />
+		<Unit filename="g_main.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="r_main.cpp" />
+		<Unit filename="r_main.h" />
+		<Unit filename="r_mouse.cpp" />
+		<Unit filename="r_mouse.h" />
+		<Unit filename="utils.cpp" />
+		<Unit filename="utils.h" />
 		<Unit filename="v_main.cpp" />
 		<Unit filename="v_main.h" />
 		<Extensions>

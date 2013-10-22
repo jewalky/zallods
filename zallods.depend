@@ -1,6 +1,11 @@
 # depslib dependency file v1.0
-1382370821 source:/home/zzyzx/dev/zallods/main.cpp
+1382435459 source:/home/zzyzx/dev/zallods/main.cpp
 	<SDL/SDL.h>
+	"String.h"
+	"v_main.h"
+	"c_main.h"
+	"g_main.h"
+	"f_main.h"
 
 1327665706 /usr/include/SDL/SDL.h
 	"SDL_main.h"
@@ -182,15 +187,122 @@
 	"begin_code.h"
 	"close_code.h"
 
-1382370972 source:/home/zzyzx/dev/zallods/v_main.cpp
+1382438867 source:/home/zzyzx/dev/zallods/v_main.cpp
+	"v_main.h"
+	"main.h"
+	"c_main.h"
 
-1382372148 source:/home/zzyzx/dev/zallods/String.cpp
+1382434637 source:/home/zzyzx/dev/zallods/String.cpp
 	"String.h"
 	<cstring>
 	<cstdarg>
 	<cstdio>
+	<cstdlib>
 
-1382372245 /home/zzyzx/dev/zallods/String.h
+1382434623 /home/zzyzx/dev/zallods/String.h
 	<string>
 	<vector>
+
+1382437788 /home/zzyzx/dev/zallods/v_main.h
+	<SDL/SDL.h>
+
+1382426406 /home/zzyzx/dev/zallods/main.h
+	"String.h"
+
+1382436424 source:/home/zzyzx/dev/zallods/c_main.cpp
+	"c_main.h"
+	"main.h"
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<cstdarg>
+
+1382427536 /home/zzyzx/dev/zallods/c_main.h
+	"String.h"
+
+1382433237 source:/home/zzyzx/dev/zallods/g_event.cpp
+	"g_event.h"
+	"c_main.h"
+
+1382432562 /home/zzyzx/dev/zallods/g_event.h
+	<list>
+	<SDL/SDL.h>
+
+1382450421 source:/home/zzyzx/dev/zallods/g_main.cpp
+	"g_main.h"
+	"g_event.h"
+	"c_main.h"
+	"r_main.h"
+	"v_main.h"
+	"f_16a.h"
+
+1382434917 /home/zzyzx/dev/zallods/g_main.h
+
+1382440745 source:/home/zzyzx/dev/zallods/f_file.cpp
+	"f_file.h"
+	"utils.h"
+
+1382436470 /home/zzyzx/dev/zallods/f_file.h
+	"String.h"
+	<stdint.h>
+	<vector>
+	<fstream>
+
+1382434248 /home/zzyzx/dev/zallods/utils.h
+	<dirent.h>
+	<stdint.h>
+	"String.h"
+
+1382434237 source:/home/zzyzx/dev/zallods/utils.cpp
+	<fstream>
+	"utils.h"
+
+1382441046 source:/home/zzyzx/dev/zallods/f_main.cpp
+	"f_main.h"
+	"f_file.h"
+	"c_main.h"
+
+1382434988 /home/zzyzx/dev/zallods/f_main.h
+
+1382443776 source:/home/zzyzx/dev/zallods/r_main.cpp
+	"r_main.h"
+	"v_main.h"
+
+1382437758 /home/zzyzx/dev/zallods/r_main.h
+	<SDL/SDL.h>
+	<stdint.h>
+
+1382445306 source:/home/zzyzx/dev/zallods/f_bmp.cpp
+	"f_bmp.h"
+	"f_file.h"
+	"c_main.h"
+	"v_main.h"
+
+1382440541 source:/home/zzyzx/dev/zallods/r_mouse.cpp
+	"r_mouse.h"
+
+1382440527 /home/zzyzx/dev/zallods/r_mouse.h
+
+1382442334 /home/zzyzx/dev/zallods/f_bmp.h
+	<SDL/SDL.h>
+	"String.h"
+	<stdint.h>
+
+1382451336 source:/home/zzyzx/dev/zallods/f_16a.cpp
+	"f_16a.h"
+	"v_main.h"
+	"c_main.h"
+	"f_file.h"
+
+1382445811 source:/home/zzyzx/dev/zallods/f_sprite.cpp
+	"f_sprite.h"
+	<cstdlib>
+
+1382446103 /home/zzyzx/dev/zallods/f_sprite.h
+	<vector>
+	<stdint.h>
+
+1382445972 /home/zzyzx/dev/zallods/f_16a.h
+	"f_sprite.h"
+	"String.h"
 
