@@ -137,3 +137,11 @@ uint16_t Image::getHeight()
     if(!mSurface) return 0;
     return mSurface->h;
 }
+
+uint32_t Image::getPixelAt(int16_t x, int16_t y)
+{
+    if(x < 0 || y < 0 || x >= getWidth() || y >= getHeight())
+        return OutOfRange;
+    uint32_t* upixels = (uint32_t*)mSurface->pixels;
+    return *(upixels + y * getWidth() + x);
+}

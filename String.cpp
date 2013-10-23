@@ -8,7 +8,7 @@ String String::format(const String& format, ...)
 {
     va_list va;
     va_start(va, format);
-    int strl = vsnprintf(NULL, 0, format.c_str(), va);
+    int strl = vsnprintf(NULL, 0, format.c_str(), va)+1;
     va_end(va);
     va_start(va, format);
     char* line = new char[strl+1];

@@ -19,6 +19,8 @@ FILE* g_stdout = NULL;
 void C_Init()
 {
 #ifndef __MINGW32__
+    g_stderr = stderr;
+    g_stdout = stdout;
     stderr = fopen("/dev/null", "wb");
     stdout = fopen("/dev/null", "wb");
 #else

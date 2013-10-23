@@ -1,10 +1,11 @@
 #include "g_main.h"
 #include "g_event.h"
+#include "g_screen.h"
 #include "c_main.h"
 #include "r_main.h"
 #include "v_main.h"
 #include "r_mouse.h"
-#include "f_bmp.h"
+#include "screens/MainMenu.h"
 
 bool G_Init()
 {
@@ -20,15 +21,12 @@ void G_MainLoop()
 {
     LoadCursors();
 
+    R_SetTarget(rt_back);
+    R_FillRect(r_clip, 0, 0, 0, 255);
+
+    G_SetScreen(new ScMainMenu());
+
     bool gml_close = false;
-    static Image* img = NULL;
-    if(!img) img = new Image("locale/ru/graphics/mainmenu/menu_.bmp");
-
-    R_SetTarget(rt_main);
-    R_FillRect(r_clip, 0, 0, 0, 255); // clear the view just in case
-    img->display(0, 0);
-    R_FullUpdate();
-
     while(!gml_close)
     {
         SDL_Event e;
@@ -42,11 +40,14 @@ void G_MainLoop()
         {
             if(ev.type == Event::Quit)
                 gml_close = true;
+            if(g_screen)
+                g_screen->onEvent(ev);
         }
 
-        R_SetTarget(rt_main);
+        R_SetTarget(rt_back);
 
-        // do something
+        if(g_screen)
+            g_screen->display();
 
         R_Mouse();
 

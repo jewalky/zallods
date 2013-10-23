@@ -7,6 +7,8 @@
 	"g_main.h"
 	"f_main.h"
 
+1382454450 
+
 1327665706 /usr/include/SDL/SDL.h
 	"SDL_main.h"
 	"SDL_stdinc.h"
@@ -25,6 +27,8 @@
 	"SDL_version.h"
 	"begin_code.h"
 	"close_code.h"
+
+1327665706 e.h"
 
 1327665706 /usr/include/SDL/SDL_main.h
 	"SDL_stdinc.h"
@@ -170,6 +174,8 @@
 	"SDL_stdinc.h"
 	"SDL_error.h"
 
+1327665706 .h"
+
 1327665706 /usr/include/SDL/SDL_loadso.h
 	"SDL_stdinc.h"
 	"SDL_error.h"
@@ -205,6 +211,8 @@
 
 1382437788 /home/zzyzx/dev/zallods/v_main.h
 	<SDL/SDL.h>
+
+1382454450 >
 
 1382426406 /home/zzyzx/dev/zallods/main.h
 	"String.h"
@@ -280,6 +288,8 @@
 
 1382440541 source:/home/zzyzx/dev/zallods/r_mouse.cpp
 	"r_mouse.h"
+
+1382440541 "
 
 1382440527 /home/zzyzx/dev/zallods/r_mouse.h
 
@@ -463,4 +473,198 @@
 1382472859 w:\dev\zallods\f_16.h
 	"f_sprite.h"
 	"String.h"
+
+1382538425 source:/home/zzyzx/dev/zallods/String.cpp
+	"String.h"
+	<cstring>
+	<cstdarg>
+	<cstdio>
+	<cstdlib>
+
+1382434623 /home/zzyzx/dev/zallods/String.h
+	<string>
+	<vector>
+
+1382535088 source:/home/zzyzx/dev/zallods/c_main.cpp
+	"c_main.h"
+	"main.h"
+	<cstdio>
+	<cstdlib>
+	<cstring>
+	<cstdarg>
+	<windows.h>
+
+1382427536 /home/zzyzx/dev/zallods/c_main.h
+	"String.h"
+
+1382426406 /home/zzyzx/dev/zallods/main.h
+	"String.h"
+
+1382512679 source:/home/zzyzx/dev/zallods/f_16.cpp
+	"f_16.h"
+	"v_main.h"
+	"c_main.h"
+	"f_file.h"
+
+1382512679 /home/zzyzx/dev/zallods/f_16.h
+	"f_sprite.h"
+	"String.h"
+
+1382512679 /home/zzyzx/dev/zallods/f_sprite.h
+	<vector>
+	<stdint.h>
+
+1382437788 /home/zzyzx/dev/zallods/v_main.h
+	<SDL/SDL.h>
+
+1382436470 /home/zzyzx/dev/zallods/f_file.h
+	"String.h"
+	<stdint.h>
+	<vector>
+	<fstream>
+
+1382512679 source:/home/zzyzx/dev/zallods/f_16a.cpp
+	"f_16a.h"
+	"v_main.h"
+	"c_main.h"
+	"f_file.h"
+
+1382445972 /home/zzyzx/dev/zallods/f_16a.h
+	"f_sprite.h"
+	"String.h"
+
+1382512679 source:/home/zzyzx/dev/zallods/f_256.cpp
+	"f_256.h"
+	"v_main.h"
+	"c_main.h"
+	"f_file.h"
+
+1382512679 /home/zzyzx/dev/zallods/f_256.h
+	"f_sprite.h"
+	"String.h"
+
+1382539000 source:/home/zzyzx/dev/zallods/f_bmp.cpp
+	"f_bmp.h"
+	"f_file.h"
+	"c_main.h"
+	"v_main.h"
+
+1382442334 /home/zzyzx/dev/zallods/f_bmp.h
+	<SDL/SDL.h>
+	"String.h"
+	<stdint.h>
+
+1382440745 source:/home/zzyzx/dev/zallods/f_file.cpp
+	"f_file.h"
+	"utils.h"
+
+1382434248 /home/zzyzx/dev/zallods/utils.h
+	<dirent.h>
+	<stdint.h>
+	"String.h"
+
+1382441046 source:/home/zzyzx/dev/zallods/f_main.cpp
+	"f_main.h"
+	"f_file.h"
+	"c_main.h"
+
+1382434988 /home/zzyzx/dev/zallods/f_main.h
+
+1382512679 source:/home/zzyzx/dev/zallods/f_sprite.cpp
+	"f_sprite.h"
+	<cstdlib>
+
+1382542025 source:/home/zzyzx/dev/zallods/g_event.cpp
+	"g_event.h"
+	"c_main.h"
+
+1382542001 /home/zzyzx/dev/zallods/g_event.h
+	<list>
+	<SDL/SDL.h>
+
+1382542763 source:/home/zzyzx/dev/zallods/g_main.cpp
+	"g_main.h"
+	"g_event.h"
+	"g_screen.h"
+	"c_main.h"
+	"r_main.h"
+	"v_main.h"
+	"r_mouse.h"
+	"screens/MainMenu.h"
+
+1382434917 /home/zzyzx/dev/zallods/g_main.h
+
+1382539913 /home/zzyzx/dev/zallods/r_main.h
+	<SDL/SDL.h>
+	<stdint.h>
+
+1382512679 /home/zzyzx/dev/zallods/r_mouse.h
+	"f_sprite.h"
+	"String.h"
+
+1382512679 source:/home/zzyzx/dev/zallods/main.cpp
+	<SDL/SDL.h>
+	"String.h"
+	"v_main.h"
+	"c_main.h"
+	"g_main.h"
+	"f_main.h"
+
+1382539923 source:/home/zzyzx/dev/zallods/r_main.cpp
+	"r_main.h"
+	"v_main.h"
+	<list>
+
+1382540650 source:/home/zzyzx/dev/zallods/r_mouse.cpp
+	"r_mouse.h"
+	"g_event.h"
+	"f_256.h"
+	"f_16a.h"
+	"f_16.h"
+	"v_main.h"
+	"r_main.h"
+	"c_main.h"
+
+1382434237 source:/home/zzyzx/dev/zallods/utils.cpp
+	<fstream>
+	"utils.h"
+
+1382532532 source:/home/zzyzx/dev/zallods/v_main.cpp
+	"v_main.h"
+	"main.h"
+	"c_main.h"
+
+1382535120 source:/home/zzyzx/dev/zallods/g_screen.cpp
+	"g_screen.h"
+	"c_main.h"
+
+1382533968 /home/zzyzx/dev/zallods/g_screen.h
+	<SDL/SDL.h>
+	<SDL/SDL_thread.h>
+	"g_event.h"
+
+1382543323 source:/home/zzyzx/dev/zallods/screens/MainMenu.cpp
+	"MainMenu.h"
+	"r_mouse.h"
+	"c_main.h"
+	"g_locale.h"
+	"r_main.h"
+	"v_main.h"
+	"r_blur.h"
+
+1382540742 /home/zzyzx/dev/zallods/screens/MainMenu.h
+	"g_screen.h"
+	"f_bmp.h"
+
+1382538085 source:/home/zzyzx/dev/zallods/g_locale.cpp
+	"g_locale.h"
+
+1382538092 /home/zzyzx/dev/zallods/g_locale.h
+	"String.h"
+
+1382543703 source:/home/zzyzx/dev/zallods/r_blur.cpp
+	"r_main.h"
+	"v_main.h"
+
+1382542857 /home/zzyzx/dev/zallods/r_blur.h
 

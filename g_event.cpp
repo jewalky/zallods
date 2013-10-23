@@ -192,3 +192,10 @@ uint16_t Events::getMouseMask()
 {
     return mMouseMask;
 }
+
+void Events::quit()
+{
+    Event ev;
+    ev.type = Event::Quit;
+    mEvents.push_front(ev);
+}

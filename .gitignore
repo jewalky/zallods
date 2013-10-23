@@ -15,6 +15,11 @@
 # Resources
 *.res
 
+# CodeBlocks
+*.layout
+*.depend
+
 # Compiled binaries
-bin
-obj
+bin/*
+obj/*
+
