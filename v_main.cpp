@@ -10,7 +10,7 @@ SDL_Surface* rt_back = NULL;
 
 uint16_t r_width = 0;
 uint16_t r_height = 0;
-bool r_fullscreen = true;
+bool r_fullscreen = false;
 
 bool V_Init()
 {

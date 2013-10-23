@@ -45,6 +45,8 @@ class Events
 
         uint16_t getMouseMask();
 
+        void quit();
+
         enum
         {
             ButtonLeft      = 0x01,

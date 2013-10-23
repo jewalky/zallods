@@ -20,6 +20,6 @@
 *.depend
 
 # Compiled binaries
-bin
-obj
+bin/*
+obj/*
 

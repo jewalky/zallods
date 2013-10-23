@@ -8,8 +8,8 @@
 		<Build>
 			<Target title="Debug">
 				<Option platforms="Unix;Mac;" />
-				<Option output="bin\Debug\zallods" prefix_auto="1" extension_auto="0" />
-				<Option object_output="obj\Debug\" />
+				<Option output="bin/Debug/zallods" prefix_auto="1" extension_auto="0" />
+				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -18,8 +18,8 @@
 			</Target>
 			<Target title="Release">
 				<Option platforms="Unix;Mac;" />
-				<Option output="bin\Release\zallods" prefix_auto="1" extension_auto="0" />
-				<Option object_output="obj\Release\" />
+				<Option output="bin/Release/zallods" prefix_auto="1" extension_auto="0" />
+				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -31,8 +31,8 @@
 			</Target>
 			<Target title="Debug (Win32)">
 				<Option platforms="Windows;" />
-				<Option output="bin\Debug\zallods" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Debug\" />
+				<Option output="bin/Debug/zallods" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
@@ -48,8 +48,8 @@
 			</Target>
 			<Target title="Release (Win32)">
 				<Option platforms="Windows;" />
-				<Option output="bin\Release\zallods" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj\Release\" />
+				<Option output="bin/Release/zallods" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -67,6 +67,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="`sdl-config --cflags`" />
+			<Add directory="." />
 		</Compiler>
 		<Linker>
 			<Add option="`sdl-config --libs`" />
@@ -91,14 +92,22 @@
 		<Unit filename="f_sprite.h" />
 		<Unit filename="g_event.cpp" />
 		<Unit filename="g_event.h" />
+		<Unit filename="g_locale.cpp" />
+		<Unit filename="g_locale.h" />
 		<Unit filename="g_main.cpp" />
 		<Unit filename="g_main.h" />
+		<Unit filename="g_screen.cpp" />
+		<Unit filename="g_screen.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
+		<Unit filename="r_blur.cpp" />
+		<Unit filename="r_blur.h" />
 		<Unit filename="r_main.cpp" />
 		<Unit filename="r_main.h" />
 		<Unit filename="r_mouse.cpp" />
 		<Unit filename="r_mouse.h" />
+		<Unit filename="screens/MainMenu.cpp" />
+		<Unit filename="screens/MainMenu.h" />
 		<Unit filename="utils.cpp" />
 		<Unit filename="utils.h" />
 		<Unit filename="v_main.cpp" />

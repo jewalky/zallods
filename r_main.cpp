@@ -1,5 +1,8 @@
 #include "r_main.h"
 #include "v_main.h"
+#include <list>
+
+std::list<SDL_Rect> r_updatelist;
 
 void R_SetTarget(SDL_Surface* target)
 {
@@ -102,5 +105,34 @@ void R_FillRect(const SDL_Rect& rec, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 void R_FullUpdate()
 {
     if(!rt_back || !rt_main) return;
+    SDL_BlitSurface(rt_back, NULL, rt_main, NULL);
     SDL_Flip(rt_main);
+}
+
+void R_UpdateRect(int16_t x, int16_t y, uint16_t w, uint16_t h)
+{
+    if(!rt_main) return;
+    SDL_Rect r;
+    r.x = x;
+    r.y = y;
+    r.w = w;
+    r.h = h;
+    R_UpdateRect(r);
+}
+
+void R_UpdateRect(const SDL_Rect& rec)
+{
+    r_updatelist.push_back(rec);
+}
+
+void R_EndUpdate(bool flip)
+{
+    for(std::list<SDL_Rect>::iterator it = r_updatelist.begin(); it != r_updatelist.end(); ++it)
+    {
+        SDL_Rect& r = (*it);
+        SDL_BlitSurface(rt_back, &r, rt_main, &r);
+    }
+
+    r_updatelist.clear();
+    if(flip) SDL_Flip(rt_main);
 }
