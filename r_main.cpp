@@ -99,10 +99,8 @@ void R_FillRect(const SDL_Rect& rec, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
     }
 }
 
-void R_FullBlit()
+void R_FullUpdate()
 {
     if(!rt_back || !rt_main) return;
-
-    SDL_BlitSurface(rt_back, NULL, rt_main, NULL);
     SDL_Flip(rt_main);
 }

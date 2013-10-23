@@ -15,6 +15,12 @@
 # Resources
 *.res
 
+<<<<<<< HEAD
 # CodeBlocks
 *.layout
 *.depend
+=======
+# Compiled binaries
+bin
+obj
+>>>>>>> f4930f01027e4bf8f3968c9eb46c4abb36d49576

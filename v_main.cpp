@@ -10,7 +10,7 @@ SDL_Surface* rt_back = NULL;
 
 uint16_t r_width = 0;
 uint16_t r_height = 0;
-bool r_fullscreen = false;
+bool r_fullscreen = true;
 
 bool V_Init()
 {
@@ -49,7 +49,7 @@ bool V_Init()
     if(SDL_Init(SDL_INIT_VIDEO) != 0)
         C_Fatal("V_Init: Couldn't initialize SDL.\n");
 
-    uint32_t sdl_flags = 0;
+    uint32_t sdl_flags = SDL_DOUBLEBUF;
     if(r_fullscreen) sdl_flags |= SDL_FULLSCREEN;
 
     C_Printf("V_Init: Setting up video mode %ux%ux32%s...\n", r_width, r_height, r_fullscreen ? "" : " (windowed)");
@@ -63,6 +63,7 @@ bool V_Init()
         C_Fatal("V_Init: Couldn't initialize back surface: %s.\n", SDL_GetError());
 
     SDL_EnableUNICODE(true);
+    SDL_ShowCursor(false);
 
     return true;
 }

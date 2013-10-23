@@ -24,6 +24,8 @@ class Sprite
         uint16_t getWidth(uint32_t num);
         uint16_t getHeight(uint32_t num);
 
+        uint32_t length();
+
     protected:
         std::vector<SpriteFrame> mFrames;
 };
