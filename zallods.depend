@@ -582,7 +582,7 @@
 	<list>
 	<SDL/SDL.h>
 
-1382542763 source:/home/zzyzx/dev/zallods/g_main.cpp
+1387210336 source:/home/zzyzx/dev/zallods/g_main.cpp
 	"g_main.h"
 	"g_event.h"
 	"g_screen.h"
@@ -590,6 +590,7 @@
 	"r_main.h"
 	"v_main.h"
 	"r_mouse.h"
+	"f_font.h"
 	"screens/MainMenu.h"
 
 1382434917 /home/zzyzx/dev/zallods/g_main.h
@@ -615,7 +616,7 @@
 	"v_main.h"
 	<list>
 
-1382540650 source:/home/zzyzx/dev/zallods/r_mouse.cpp
+1387209323 source:/home/zzyzx/dev/zallods/r_mouse.cpp
 	"r_mouse.h"
 	"g_event.h"
 	"f_256.h"
@@ -643,14 +644,13 @@
 	<SDL/SDL_thread.h>
 	"g_event.h"
 
-1382543323 source:/home/zzyzx/dev/zallods/screens/MainMenu.cpp
+1387209469 source:/home/zzyzx/dev/zallods/screens/MainMenu.cpp
 	"MainMenu.h"
 	"r_mouse.h"
 	"c_main.h"
 	"g_locale.h"
 	"r_main.h"
 	"v_main.h"
-	"r_blur.h"
 
 1382540742 /home/zzyzx/dev/zallods/screens/MainMenu.h
 	"g_screen.h"
@@ -662,9 +662,22 @@
 1382538092 /home/zzyzx/dev/zallods/g_locale.h
 	"String.h"
 
-1382543703 source:/home/zzyzx/dev/zallods/r_blur.cpp
+1382595228 source:/home/zzyzx/dev/zallods/r_blur.cpp
 	"r_main.h"
 	"v_main.h"
 
 1382542857 /home/zzyzx/dev/zallods/r_blur.h
+
+1387210812 source:/home/zzyzx/dev/zallods/f_font.cpp
+	"f_font.h"
+	"c_main.h"
+	"f_file.h"
+	"f_16.h"
+	"f_16a.h"
+	"f_256.h"
+
+1387210624 /home/zzyzx/dev/zallods/f_font.h
+	<SDL/SDL.h>
+	"String.h"
+	"f_sprite.h"
 

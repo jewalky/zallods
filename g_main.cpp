@@ -5,6 +5,7 @@
 #include "r_main.h"
 #include "v_main.h"
 #include "r_mouse.h"
+#include "f_font.h"
 #include "screens/MainMenu.h"
 
 bool G_Init()
@@ -20,11 +21,12 @@ void G_Quit()
 void G_MainLoop()
 {
     LoadCursors();
+    LoadFonts();
 
     R_SetTarget(rt_back);
     R_FillRect(r_clip, 0, 0, 0, 255);
 
-    G_SetScreen(new ScMainMenu());
+    //G_SetScreen(new ScMainMenu());
 
     bool gml_close = false;
     while(!gml_close)
@@ -48,6 +50,14 @@ void G_MainLoop()
 
         if(g_screen)
             g_screen->display();
+
+        SDL_Rect rr;
+        rr.x = 32;
+        rr.y = 32;
+        rr.w = 128;
+        rr.h = 16;
+        R_FillRect(rr, 0, 0, 0, 255);
+
 
         R_Mouse();
 

@@ -4,7 +4,6 @@
 #include "g_locale.h"
 #include "r_main.h"
 #include "v_main.h"
-#include "r_blur.h"
 
 ScMainMenu::ScMainMenu()
 {
@@ -154,7 +153,6 @@ void ScMainMenu::display()
         }
 
         R_UpdateRect(pX, pY, 640, 480);
-        R_Blur();
         mChangedBg = false;
     }
 }
