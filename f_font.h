@@ -19,10 +19,11 @@ class Font
             Align_Both
         };
 
-        void display(const SDL_Rect& rect, String text, Align align, uint8_t r = 255, uint8_t g = 255, uint8_t b = 255);
+        void display(const SDL_Rect& rect, String text, Align align, uint8_t r = 255, uint8_t g = 255, uint8_t b = 255, int16_t shadowpos = 0x7FFF);
 
-        uint32_t measureWidth(const SDL_Rect& rect, String text, Align align);
-        uint32_t measureWidth(uint32_t width, String text, Align align);
+        uint32_t measureWidth(String text, Align align);
+
+        char convertEncoding(char c);
 
     private:
         Sprite* mSprite;

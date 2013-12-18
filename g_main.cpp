@@ -55,9 +55,11 @@ void G_MainLoop()
         rr.x = 32;
         rr.y = 32;
         rr.w = 128;
-        rr.h = 16;
-        R_FillRect(rr, 0, 0, 0, 255);
+        rr.h = 128;
+        R_FillRect(rr, 0, 16, 64, 255);
+        Font1->display(rr, "this is one wide ass string!!!\n\nAnd it also has lots of newlines.\n\\n", Font::Align_Both, 255, 255, 255, 1);
 
+        R_UpdateRect(rr);
 
         R_Mouse();
 
