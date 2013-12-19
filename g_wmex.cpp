@@ -1,5 +1,6 @@
 #include "g_wmex.h"
 #include "f_font.h"
+#include "r_main.h"
 
 WLabel::WLabel(Window* parent, int16_t x, int16_t y, uint16_t w, uint16_t h, String text) :
     Window(parent, x, y, w, h)

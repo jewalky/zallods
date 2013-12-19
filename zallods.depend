@@ -596,7 +596,7 @@
 
 1387460169 /home/zzyzx/dev/zallods/g_main.h
 
-1382539913 /home/zzyzx/dev/zallods/r_main.h
+1387468219 /home/zzyzx/dev/zallods/r_main.h
 	<SDL/SDL.h>
 	<stdint.h>
 
@@ -612,10 +612,11 @@
 	"g_main.h"
 	"f_main.h"
 
-1382539923 source:/home/zzyzx/dev/zallods/r_main.cpp
+1387469757 source:/home/zzyzx/dev/zallods/r_main.cpp
 	"r_main.h"
 	"v_main.h"
 	<list>
+	<cmath>
 
 1387209323 source:/home/zzyzx/dev/zallods/r_mouse.cpp
 	"r_mouse.h"
@@ -669,7 +670,7 @@
 
 1382542857 /home/zzyzx/dev/zallods/r_blur.h
 
-1387466678 source:/home/zzyzx/dev/zallods/f_font.cpp
+1387469880 source:/home/zzyzx/dev/zallods/f_font.cpp
 	"f_font.h"
 	"c_main.h"
 	"f_file.h"
@@ -677,6 +678,7 @@
 	"f_16a.h"
 	"f_256.h"
 	"r_main.h"
+	"v_main.h"
 
 1387283186 /home/zzyzx/dev/zallods/f_font.h
 	<SDL/SDL.h>
@@ -699,9 +701,10 @@
 	"String.h"
 	"g_event.h"
 
-1387467694 source:/home/zzyzx/dev/zallods/g_wmex.cpp
+1387469912 source:/home/zzyzx/dev/zallods/g_wmex.cpp
 	"g_wmex.h"
 	"f_font.h"
+	"r_main.h"
 
 1387467446 /home/zzyzx/dev/zallods/g_wmex.h
 	"g_wm.h"

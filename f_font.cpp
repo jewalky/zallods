@@ -5,6 +5,7 @@
 #include "f_16a.h"
 #include "f_256.h"
 #include "r_main.h"
+#include "v_main.h"
 
 Font* Font1 = NULL;
 Font* Font2 = NULL;
@@ -67,8 +68,13 @@ uint32_t Font::measureWidth(String text, Font::Align align)
 
 void Font::display(const SDL_Rect& rect, String text, Font::Align align, uint8_t r, uint8_t g, uint8_t b, int16_t shadowpos)
 {
+    SDL_Rect clipRectOld;
+    bool clipRectSet = false;
+
     if(shadowpos != 0x7FFF)
     {
+        clipRectOld = r_clip;
+        clipRectSet = true;
         SDL_Rect clipRect = rect;
         clipRect.w += shadowpos;
         clipRect.h += shadowpos;
@@ -204,6 +210,9 @@ void Font::display(const SDL_Rect& rect, String text, Font::Align align, uint8_t
         spos = lastspace+skipcnt;
         yoffs += mLineHeight;
     }
+
+    if(clipRectSet)
+        R_SetClip(clipRectOld);
 }
 
 char Font::convertEncoding(char cc)

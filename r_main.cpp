@@ -1,6 +1,7 @@
 #include "r_main.h"
 #include "v_main.h"
 #include <list>
+#include <cmath>
 
 std::list<SDL_Rect> r_updatelist;
 
@@ -135,4 +136,88 @@ void R_EndUpdate(bool flip)
 
     r_updatelist.clear();
     if(flip) SDL_Flip(rt_main);
+}
+
+/*plotLine(x0,y0, x1,y1)
+  dx=x1-x0
+  dy=y1-y0
+
+  D = 2*dy - dx
+  plot(x0,y0)
+  y=y0
+
+  for x from x0+1 to x1
+    if D > 0
+      y = y+1
+      plot(x,y)
+      D = D + (2*dy-2*dx)
+    else
+      plot(x,y)
+      D = D + (2*dy)*/
+
+#define Sign(x) ((x < 0) ? -1 : 1)
+#define PutPointAlpha(px, X, Y, r, g, b, a)            if(X >= r_clip.x && Y >= r_clip.y && \
+                                                          X <= r_clip.x+r_clip.w && Y <= r_clip.y+r_clip.h) \
+                                                       { \
+                                                        uint32_t iv = px[(int)Y*r_target->w+(int)X]; \
+                                                        uint16_t ir = (iv & 0x00FF0000) >> 16; \
+                                                        uint16_t ig = (iv & 0x0000FF00) >> 8; \
+                                                        uint16_t ib = (iv & 0x000000FF); \
+                                                        if(a < 255) \
+                                                        { \
+                                                            float aa = (float)a / 255.0; \
+                                                            ir = ((float)ir * (1.0-aa) + (float)r * (aa)); if(ir > 255) ir = 255; \
+                                                            ig = ((float)ig * (1.0-aa) + (float)g * (aa)); if(ig > 255) ig = 255; \
+                                                            ib = ((float)ib * (1.0-aa) + (float)b * (aa)); if(ib > 255) ib = 255; \
+                                                        } \
+                                                        else \
+                                                        { \
+                                                            ir = r; \
+                                                            ig = g; \
+                                                            ib = b; \
+                                                        } \
+                                                        iv = 0xFF00; \
+                                                        iv |= ir; iv <<= 8; \
+                                                        iv |= ig; iv <<= 8; \
+                                                        iv |= ib; \
+                                                        px[(int)Y*r_target->w+(int)X] = iv; \
+                                                       }
+
+void R_DrawLine(int16_t x1i, int16_t y1i, int16_t x2i, int16_t y2i, uint8_t r, uint8_t g, uint8_t b, uint8_t a)
+{
+    if(!r_target) return;
+    if(!a) return;
+
+    uint32_t* upixels = (uint32_t*)r_target->pixels;
+
+    double x1 = x1i;
+    double y1 = y1i;
+    double x2 = x2i;
+    double y2 = y2i;
+    double dy = y2 - y1;
+    double dx = x2 - x1;
+    double x, y;
+
+    if(fabs(dy) > fabs(dx))
+	{
+        for(y = y1; y != y2; y += Sign(dy))
+		{
+            x = x1 + ( y - y1 ) * dx / dy;
+
+            PutPointAlpha(upixels, x, y, r, g, b, a);
+        }
+    }
+
+    else
+	{
+        for(x = x1; x != x2; x += Sign(dx))
+		{
+            y = y1 + ( x - x1 ) * dy / dx;
+
+            PutPointAlpha(upixels, x, y, r, g, b, a);
+        }
+    }
+
+    // draw the last point
+    PutPointAlpha(upixels, x, y, r, g, b, a);
 }
