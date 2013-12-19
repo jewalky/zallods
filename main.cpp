@@ -13,6 +13,7 @@ int _main()
 
     if(!V_Init()) return 1;
     if(!F_Init()) return 1;
+    if(!G_Init()) return 1;
 
     G_MainLoop();
 
@@ -31,6 +32,7 @@ int main(int argc, char* argv[])
 
 void Abort()
 {
+    G_Quit();
     V_Quit();
     exit(1);
 }

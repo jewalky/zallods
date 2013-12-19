@@ -6,16 +6,57 @@
 #include "v_main.h"
 #include "r_mouse.h"
 #include "f_font.h"
+#include "g_wm.h"
 #include "screens/MainMenu.h"
+
+bool gml_close = false;
 
 bool G_Init()
 {
-    return false;
+    WM_Init();
+    return true;
 }
 
 void G_Quit()
 {
+    WM_Quit();
+}
 
+void G_MainLoopStep()
+{
+    SDL_Event e;
+    while(SDL_PollEvent(&e))
+        Events.eatEvent(e);
+
+    Events.tick();
+
+    Event ev;
+    while(Events.getEvent(ev))
+    {
+        if(ev.type == Event::Quit)
+            gml_close = true;
+
+        if(!WM_Process(ev))
+        {
+            if(g_screen)
+                g_screen->onEvent(ev);
+        }
+    }
+
+    R_SetTarget(rt_back);
+
+    if(!WM_Display())
+    {
+        if(g_screen)
+            g_screen->display();
+    }
+
+    R_Mouse();
+}
+
+bool G_IsExiting()
+{
+    return gml_close;
 }
 
 void G_MainLoop()
@@ -23,46 +64,25 @@ void G_MainLoop()
     LoadCursors();
     LoadFonts();
 
+    gml_close = false;
+
     R_SetTarget(rt_back);
     R_FillRect(r_clip, 0, 0, 0, 255);
 
     //G_SetScreen(new ScMainMenu());
 
-    bool gml_close = false;
-    while(!gml_close)
+    Image* i = new Image("graphics/interface/docs/sheet.bmp");
+    i->display(0, 0);
+    R_FullUpdate();
+
+    /*ToplevelWindow* wnd = new ToplevelWindow(3, 3);
+    wnd->show();*/
+    MessageBoxWindow* wnd = new MessageBoxWindow("This is a new messagebox window. It's also multiline btw.");
+    wnd->show();
+
+    while(!G_IsExiting())
     {
-        SDL_Event e;
-        while(SDL_PollEvent(&e))
-            Events.eatEvent(e);
-
-        Events.tick();
-
-        Event ev;
-        while(Events.getEvent(ev))
-        {
-            if(ev.type == Event::Quit)
-                gml_close = true;
-            if(g_screen)
-                g_screen->onEvent(ev);
-        }
-
-        R_SetTarget(rt_back);
-
-        if(g_screen)
-            g_screen->display();
-
-        SDL_Rect rr;
-        rr.x = 32;
-        rr.y = 32;
-        rr.w = 128;
-        rr.h = 128;
-        R_FillRect(rr, 0, 16, 64, 255);
-        Font1->display(rr, "this is one wide ass string!!!\n\nAnd it also has lots of newlines.\n\\n", Font::Align_Both, 255, 255, 255, 1);
-
-        R_UpdateRect(rr);
-
-        R_Mouse();
-
+        G_MainLoopStep();
         SDL_Delay(1);
     }
 }

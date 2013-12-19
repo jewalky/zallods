@@ -173,7 +173,7 @@ void Font::display(const SDL_Rect& rect, String text, Font::Align align, uint8_t
 
         if(nspos >= text.length())
         {
-            lastspace = nspos;
+            lastspace = nspos = text.length();
         }
         else
         {
@@ -190,7 +190,7 @@ void Font::display(const SDL_Rect& rect, String text, Font::Align align, uint8_t
             offs = (rect.w/2)-(measureWidth(drawnText, align)/2);
         else offs = 0;
 
-        int spacewidth = ((align == Align_Both && spacecnt > 0) ? ((rect.w - wssize) / (spacecnt)) : (mSizes[0]+2));
+        int spacewidth = ((lastspace != text.length() && align == Align_Both && spacecnt > 0) ? ((rect.w - wssize) / (spacecnt)) : (mSizes[0]+2));
 
         for(size_t i = spos; i < lastspace; i++)
         {
