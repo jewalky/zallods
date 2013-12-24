@@ -54,6 +54,13 @@ void WM_DelWindow(Window* wnd)
     }
 }
 
+bool WM_WindowExists(Window* wnd)
+{
+    for(size_t i = 0; i < WM::Windows.size(); i++)
+        if(WM::Windows[i] == wnd) return true;
+    return false;
+}
+
 bool WM_Display()
 {
     if(WM::Windows.size())
@@ -68,12 +75,94 @@ bool WM_Display()
 
 Window::Window(Window* parent, int16_t x, int16_t y, uint16_t w, uint16_t h)
 {
+    mFocused = false;
+    mTabChild = NULL;
     mRect.x = x;
     mRect.y = y;
     mRect.w = w;
     mRect.h = h;
     mParent = parent;
     mInvalidated = true;
+}
+
+void Window::resetTabOrder()
+{
+    mTabChild = NULL;
+}
+
+bool Window::advanceTabOrder()
+{
+    if(!mChildren.size())
+        return false;
+
+    if(mTabChild == NULL)
+    {
+        std::vector<Window*>* children = &mChildren;
+        while(children->size())
+        {
+            bool anyFound = false;
+            for(size_t i = 0; i < children->size(); i++)
+            {
+                if((*children)[i]->isFocusable())
+                {
+                    (*children)[i]->focus();
+                    children = &(*children)[i]->mChildren;
+                    anyFound = true;
+                    break;
+                }
+            }
+
+            if(!anyFound) break;
+        }
+
+
+        return true;
+    }
+
+    for(size_t i = 0; i < mChildren.size(); i++)
+    {
+        if(mChildren[i] == mTabChild)
+        {
+            if(mTabChild->advanceTabOrder())
+                return true;
+            else if(i+1 < mChildren.size())
+            {
+                mTabChild = mChildren[i+1];
+                mTabChild->focus();
+                return true;
+            }
+            else return false;
+        }
+    }
+
+    return false;
+}
+
+void Window::focus()
+{
+    if(!mFocused) invalidate();
+
+    if(mParent)
+    {
+        mParent->unfocus();
+        mParent->mFocused = true;
+    }
+
+    mFocused = true;
+}
+
+void Window::unfocus()
+{
+    if(mFocused) invalidate();
+
+    mFocused = false;
+    for(size_t i = 0; i < mChildren.size(); i++)
+        mChildren[i]->unfocus();
+}
+
+bool Window::isFocused()
+{
+    return mFocused;
 }
 
 bool Window::isInvalidated()
@@ -92,7 +181,7 @@ void Window::show()
 {
     WM_AddWindow(this);
 
-    while(!G_IsExiting())
+    while(!G_IsExiting() && WM_WindowExists(this))
     {
         G_MainLoopStep();
         SDL_Delay(1);
@@ -118,6 +207,12 @@ void Window::addChild(Window* wnd)
 
 void Window::delChild(Window* wnd)
 {
+    if(mTabChild == wnd)
+    {
+        if(!advanceTabOrder())
+            resetTabOrder();
+    }
+
     for(size_t i = 0; i < mChildren.size(); i++)
     {
         if(mChildren[i] == wnd)
@@ -147,6 +242,12 @@ void Window::tick()
 const SDL_Rect& Window::getRect()
 {
     return mRect;
+}
+
+void Window::sendMessage(uint32_t type, uint32_t value, void* data)
+{
+    if(mParent)
+        mParent->sendMessage(type, value, data);
 }
 
 ToplevelWindow::ToplevelWindow(uint16_t w, uint16_t h) :
@@ -244,7 +345,8 @@ void ToplevelWindow::show()
     R_Blur();
     R_FillRect(r_clip, 0, 0, 0, 128);
     R_UpdateRect(r_clip);
-    invalidate();
+    resetTabOrder();
+    advanceTabOrder();
     Window::show();
 }
 
@@ -263,21 +365,63 @@ void ToplevelWindow::process(const Event& e)
         if(e.sym == SDLK_ESCAPE)
         {
             close();
+            return;
         }
-        else
+        else if(e.sym == SDLK_TAB)
         {
-            for(size_t i = 0; i < mChildren.size(); i++)
-                mChildren[i]->process(e);
+            if(!advanceTabOrder())
+            {
+                resetTabOrder();
+                advanceTabOrder();
+            }
         }
+    }
+
+    for(size_t i = 0; i < mChildren.size(); i++)
+    {
+        if(mChildren[i]->isFocusable() && mChildren[i]->isFocused())
+            mChildren[i]->process(e);
     }
 }
 
-MessageBoxWindow::MessageBoxWindow(String text) :
+MessageBoxWindow::MessageBoxWindow(String text, MessageBoxType type) :
     ToplevelWindow(2, 2)
 {
+    mResult = 0;
+
     WLabel* label = new WLabel(this, -8, -8, mRect.w+16, mRect.h+16, text);
     addChild(label);
 
-    WPushButton* button = new WPushButton(this, 0, mRect.h-8, mRect.w, 24, "Ok");
-    addChild(button);
+    if(type == Type_Ok)
+    {
+        WPushButton* button = new WPushButton(this, 0, mRect.h-8, mRect.w, 24, "Ok");
+        button->setIdentifier(1);
+        addChild(button);
+    }
+    else if(type == Type_OkCancel)
+    {
+        WPushButton* button_ok = new WPushButton(this, 0, mRect.h-8, mRect.w/2-8, 24, "Ok");
+        button_ok->setIdentifier(1);
+        addChild(button_ok);
+
+        WPushButton* button_cancel = new WPushButton(this, mRect.w/2+8, mRect.h-8, mRect.w/2-8, 24, "Cancel");
+        button_cancel->setIdentifier(2);
+        addChild(button_cancel);
+    }
+}
+
+void MessageBoxWindow::sendMessage(uint32_t type, uint32_t value, void* data)
+{
+    Window::sendMessage(type, value, data);
+    if(type == WPushButton::Msg_Clicked)
+    {
+        // value = button id
+        mResult = value;
+        close();
+    }
+}
+
+uint32_t MessageBoxWindow::getResult()
+{
+    return mResult;
 }

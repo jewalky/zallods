@@ -138,23 +138,6 @@ void R_EndUpdate(bool flip)
     if(flip) SDL_Flip(rt_main);
 }
 
-/*plotLine(x0,y0, x1,y1)
-  dx=x1-x0
-  dy=y1-y0
-
-  D = 2*dy - dx
-  plot(x0,y0)
-  y=y0
-
-  for x from x0+1 to x1
-    if D > 0
-      y = y+1
-      plot(x,y)
-      D = D + (2*dy-2*dx)
-    else
-      plot(x,y)
-      D = D + (2*dy)*/
-
 #define Sign(x) ((x < 0) ? -1 : 1)
 #define PutPointAlpha(px, X, Y, r, g, b, a)            if(X >= r_clip.x && Y >= r_clip.y && \
                                                           X <= r_clip.x+r_clip.w && Y <= r_clip.y+r_clip.h) \
@@ -196,7 +179,7 @@ void R_DrawLine(int16_t x1i, int16_t y1i, int16_t x2i, int16_t y2i, uint8_t r, u
     double y2 = y2i;
     double dy = y2 - y1;
     double dx = x2 - x1;
-    double x, y;
+    double x = 0, y = 0;
 
     if(fabs(dy) > fabs(dx))
 	{

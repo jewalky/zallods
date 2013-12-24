@@ -86,6 +86,8 @@
 		<Unit filename="f_bmp.h" />
 		<Unit filename="f_file.cpp" />
 		<Unit filename="f_file.h" />
+		<Unit filename="f_font.cpp" />
+		<Unit filename="f_font.h" />
 		<Unit filename="f_main.cpp" />
 		<Unit filename="f_main.h" />
 		<Unit filename="f_sprite.cpp" />
@@ -98,6 +100,10 @@
 		<Unit filename="g_main.h" />
 		<Unit filename="g_screen.cpp" />
 		<Unit filename="g_screen.h" />
+		<Unit filename="g_wm.cpp" />
+		<Unit filename="g_wm.h" />
+		<Unit filename="g_wmex.cpp" />
+		<Unit filename="g_wmex.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
 		<Unit filename="r_blur.cpp" />

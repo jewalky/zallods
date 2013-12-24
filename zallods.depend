@@ -582,7 +582,7 @@
 	<list>
 	<SDL/SDL.h>
 
-1387466624 source:/home/zzyzx/dev/zallods/g_main.cpp
+1387895510 source:/home/zzyzx/dev/zallods/g_main.cpp
 	"g_main.h"
 	"g_event.h"
 	"g_screen.h"
@@ -612,7 +612,7 @@
 	"g_main.h"
 	"f_main.h"
 
-1387469757 source:/home/zzyzx/dev/zallods/r_main.cpp
+1387893331 source:/home/zzyzx/dev/zallods/r_main.cpp
 	"r_main.h"
 	"v_main.h"
 	<list>
@@ -685,7 +685,7 @@
 	"String.h"
 	"f_sprite.h"
 
-1387467878 source:/home/zzyzx/dev/zallods/g_wm.cpp
+1387897027 source:/home/zzyzx/dev/zallods/g_wm.cpp
 	"g_wm.h"
 	"f_256.h"
 	"v_main.h"
@@ -695,18 +695,20 @@
 	"c_main.h"
 	"g_wmex.h"
 
-1387467717 /home/zzyzx/dev/zallods/g_wm.h
+1387896791 /home/zzyzx/dev/zallods/g_wm.h
 	<SDL/SDL.h>
 	<vector>
 	"String.h"
 	"g_event.h"
 
-1387469912 source:/home/zzyzx/dev/zallods/g_wmex.cpp
+1387897135 source:/home/zzyzx/dev/zallods/g_wmex.cpp
 	"g_wmex.h"
 	"f_font.h"
 	"r_main.h"
+	"c_main.h"
+	"g_event.h"
 
-1387467446 /home/zzyzx/dev/zallods/g_wmex.h
+1387896306 /home/zzyzx/dev/zallods/g_wmex.h
 	"g_wm.h"
 	"String.h"
 	"g_event.h"
