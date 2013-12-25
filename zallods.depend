@@ -582,7 +582,7 @@
 	<list>
 	<SDL/SDL.h>
 
-1387979558 source:/home/zzyzx/dev/zallods/g_main.cpp
+1387983795 source:/home/zzyzx/dev/zallods/g_main.cpp
 	"g_main.h"
 	"g_event.h"
 	"g_screen.h"
@@ -592,6 +592,7 @@
 	"r_mouse.h"
 	"f_font.h"
 	"g_wm.h"
+	"w_world.h"
 	"screens/MainMenu.h"
 
 1387460169 /home/zzyzx/dev/zallods/g_main.h
@@ -618,7 +619,7 @@
 	<list>
 	<cmath>
 
-1387209323 source:/home/zzyzx/dev/zallods/r_mouse.cpp
+1387984019 source:/home/zzyzx/dev/zallods/r_mouse.cpp
 	"r_mouse.h"
 	"g_event.h"
 	"f_256.h"
@@ -685,7 +686,7 @@
 	"String.h"
 	"f_sprite.h"
 
-1387979271 source:/home/zzyzx/dev/zallods/g_wm.cpp
+1387983761 source:/home/zzyzx/dev/zallods/g_wm.cpp
 	"g_wm.h"
 	"f_256.h"
 	"v_main.h"
@@ -713,4 +714,12 @@
 	"g_wm.h"
 	"String.h"
 	"g_event.h"
+
+1387982411 source:/home/zzyzx/dev/zallods/w_world.cpp
+	"w_world.h"
+	"f_file.h"
+	"c_main.h"
+
+1387982017 /home/zzyzx/dev/zallods/w_world.h
+	<vector>
 

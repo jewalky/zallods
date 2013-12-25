@@ -7,12 +7,14 @@
 #include "r_mouse.h"
 #include "f_font.h"
 #include "g_wm.h"
+#include "w_world.h"
 #include "screens/MainMenu.h"
 
 bool gml_close = false;
 
 bool G_Init()
 {
+    W_Init();
     WM_Init();
     return true;
 }
@@ -76,7 +78,7 @@ void G_MainLoop()
     //MessageBoxWindow* wnd = new MessageBoxWindow("This is a new messagebox window. It's also multiline btw.", MessageBoxWindow::Type_AbortRetryIgnore);
     //wnd->show();
 
-    //uint32_t result = WM_MessageBox("This is a new messagebox window. It's also multiline btw.", MessageBoxWindow::Type_AbortRetryIgnore);
+    uint32_t result = WM_MessageBox("This is a new messagebox window. It's also multiline btw.", MessageBoxWindow::Type_AbortRetryIgnore);
 
     while(!G_IsExiting())
     {

@@ -353,9 +353,7 @@ void ToplevelWindow::show()
     R_UpdateRect(r_clip);
     resetTabOrder();
     advanceTabOrder();
-    C_Printf("ToplevelWindow::show()\n");
     Window::show();
-    C_Printf("ToplevelWindow::show() exited\n");
 }
 
 void ToplevelWindow::hide()

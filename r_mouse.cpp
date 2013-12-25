@@ -69,7 +69,7 @@ void LoadCursors()
     mc_wait = new MouseCursor("graphics/cursors/wait/sprites.16a", 16, 16, 40);
     mc_select = new MouseCursor("graphics/cursors/select/sprites.16a", 4, 4, 0);
 
-    R_SetMouse(mc_default);
+    R_SetMouse(mc_wait);
 }
 
 void R_SetMouse(MouseCursor* cur)
@@ -126,6 +126,17 @@ void R_Mouse()
     R_EndUpdate(false);
     if(!isNull) SDL_BlitSurface(rt_back, &nOldRect, rt_main, &nOldRect);
     SDL_BlitSurface(rt_back, &newRect, rt_main, &newRect);
+
+    int32_t ticksLeft = SDL_GetTicks()-rm_ticks;
+    while(ticksLeft > rm_cursor->delay)
+    {
+        ticksLeft -= rm_cursor->delay;
+        rm_frame++;
+        if(rm_frame >= rm_cursor->sprite->length())
+            rm_frame = 0;
+    }
+
+    rm_ticks = SDL_GetTicks()-ticksLeft;
 
     rm_cursor->sprite->display(nX-rm_cursor->x, nY-rm_cursor->y, rm_frame);
 
