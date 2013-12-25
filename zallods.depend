@@ -582,7 +582,7 @@
 	<list>
 	<SDL/SDL.h>
 
-1387979299 source:/home/zzyzx/dev/zallods/g_main.cpp
+1387979558 source:/home/zzyzx/dev/zallods/g_main.cpp
 	"g_main.h"
 	"g_event.h"
 	"g_screen.h"
@@ -646,7 +646,7 @@
 	<SDL/SDL_thread.h>
 	"g_event.h"
 
-1387209469 source:/home/zzyzx/dev/zallods/screens/MainMenu.cpp
+1387979665 source:/home/zzyzx/dev/zallods/screens/MainMenu.cpp
 	"MainMenu.h"
 	"r_mouse.h"
 	"c_main.h"

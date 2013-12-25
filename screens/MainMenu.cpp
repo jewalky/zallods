@@ -93,6 +93,10 @@ void ScMainMenu::display()
         btnHovered = ppx;
     }
 
+    static bool blockedButtons[8] = {true, true, true, true, true, true, true, false};
+    if(btnHovered > 0 && blockedButtons[btnHovered-1])
+        btnHovered = 0;
+
     if((btnHovered != mButtonHovered) ||
        (btnClicked != mButtonClicked))
     {
@@ -150,6 +154,8 @@ void ScMainMenu::display()
             if(!mButtonClicked)
                 mImg_Buttons[bNum-1]->display(pX+bX, pY+bY);
             else mImg_ButtonsP[bNum-1]->display(pX+bX, pY+bY);
+
+            mImg_Texts[bNum-1]->display(pX+232, pY+200);
         }
 
         R_UpdateRect(pX, pY, 640, 480);

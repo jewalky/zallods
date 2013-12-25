@@ -69,11 +69,7 @@ void G_MainLoop()
     R_SetTarget(rt_back);
     R_FillRect(r_clip, 0, 0, 0, 255);
 
-    //G_SetScreen(new ScMainMenu());
-
-    Image* i = new Image("graphics/interface/docs/sheet.bmp");
-    i->display(0, 0);
-    R_FullUpdate();
+    G_SetScreen(new ScMainMenu());
 
     /*ToplevelWindow* wnd = new ToplevelWindow(3, 3);
     wnd->show();*/
