@@ -6,6 +6,7 @@
 #include "r_blur.h"
 #include "c_main.h"
 #include "g_wmex.h"
+#include "f_font.h"
 
 namespace WM
 {
@@ -393,7 +394,7 @@ void ToplevelWindow::process(const Event& e)
 }
 
 MessageBoxWindow::MessageBoxWindow(String text, MessageBoxType type) :
-    ToplevelWindow(2, 2)
+    ToplevelWindow(2+(type==Type_AbortRetryIgnore?1:0), 1+Font1->measureLines(2*96, text)/96)
 {
     mResult = 0;
 
@@ -416,6 +417,31 @@ MessageBoxWindow::MessageBoxWindow(String text, MessageBoxType type) :
         button_cancel->setIdentifier(2);
         addChild(button_cancel);
     }
+    else if(type == Type_YesNo)
+    {
+        WPushButton* button_yes = new WPushButton(this, 0, mRect.h-8, mRect.w/2-8, 24, "Yes");
+        button_yes->setIdentifier(1);
+        addChild(button_yes);
+
+        WPushButton* button_no = new WPushButton(this, mRect.w/2+8, mRect.h-8, mRect.w/2-8, 24, "No");
+        button_no->setIdentifier(2);
+        addChild(button_no);
+    }
+    else if(type == Type_AbortRetryIgnore)
+    {
+        WPushButton* button_abort = new WPushButton(this, 0, mRect.h-8, mRect.w/3-8, 24, "Abort");
+        button_abort->setIdentifier(1);
+        addChild(button_abort);
+
+        WPushButton* button_retry = new WPushButton(this, mRect.w/3+8, mRect.h-8, mRect.w/3-8, 24, "Retry");
+        button_retry->setIdentifier(2);
+        addChild(button_retry);
+
+
+        WPushButton* button_ignore = new WPushButton(this, (mRect.w/3+8)*2, mRect.h-8, mRect.w/3-8, 24, "Ignore");
+        button_ignore->setIdentifier(3);
+        addChild(button_ignore);
+    }
 }
 
 void MessageBoxWindow::sendMessage(uint32_t type, uint32_t value, void* data)
@@ -425,11 +451,20 @@ void MessageBoxWindow::sendMessage(uint32_t type, uint32_t value, void* data)
     {
         // value = button id
         mResult = value;
-        close();
+        hide();
     }
 }
 
 uint32_t MessageBoxWindow::getResult()
 {
     return mResult;
+}
+
+uint32_t WM_MessageBox(String text, MessageBoxWindow::MessageBoxType type)
+{
+    MessageBoxWindow* wnd = new MessageBoxWindow(text, type);
+    wnd->show();
+    uint32_t retval = wnd->getResult();
+    delete wnd;
+    return retval;
 }

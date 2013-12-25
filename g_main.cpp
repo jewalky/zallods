@@ -77,8 +77,10 @@ void G_MainLoop()
 
     /*ToplevelWindow* wnd = new ToplevelWindow(3, 3);
     wnd->show();*/
-    MessageBoxWindow* wnd = new MessageBoxWindow("This is a new messagebox window. It's also multiline btw.", MessageBoxWindow::Type_OkCancel);
-    wnd->show();
+    //MessageBoxWindow* wnd = new MessageBoxWindow("This is a new messagebox window. It's also multiline btw.", MessageBoxWindow::Type_AbortRetryIgnore);
+    //wnd->show();
+
+    //uint32_t result = WM_MessageBox("This is a new messagebox window. It's also multiline btw.", MessageBoxWindow::Type_AbortRetryIgnore);
 
     while(!G_IsExiting())
     {

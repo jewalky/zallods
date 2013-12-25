@@ -100,4 +100,6 @@ void WM_DelWindow(Window* wnd);
 bool WM_WindowExists(Window* wnd);
 bool WM_Display();
 
+uint32_t WM_MessageBox(String text, MessageBoxWindow::MessageBoxType type);
+
 #endif // G_WM_H_INCLUDED

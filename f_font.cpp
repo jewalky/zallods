@@ -230,6 +230,106 @@ char Font::convertEncoding(char cc)
     return c;
 }
 
+uint32_t Font::measureHeight(uint16_t w, String text)
+{
+    return measureLines(w, text) * mLineHeight;
+}
+
+uint32_t Font::measureHeight(const SDL_Rect& rect, String text)
+{
+    return measureHeight(rect.w, text);
+}
+
+uint32_t Font::measureLines(uint16_t w, String text)
+{
+    uint32_t retval = 0;
+    size_t spos = 0;
+    while(spos < text.length())
+    {
+        // try peeking ahead
+        size_t lastspace = spos;
+        size_t nspos = spos;
+        size_t wsize = 0;
+        size_t wssize = 0;
+        size_t nssize = 0;
+        int skipcnt = 0;
+        int spacecnt = 0;
+        for(/*nspos*/; nspos < text.length(); nspos++)
+        {
+            uint8_t c = (uint8_t)convertEncoding(text[nspos]);
+            wsize += mSizes[c]+2;
+
+            if(text[nspos] == ' ' ||
+               text[nspos] == '\t')
+            {
+                lastspace = nspos+1;
+                spacecnt++;
+            }
+            else if(text[nspos] == '\n')
+            {
+                lastspace = nspos+1;
+            }
+            else if(text[nspos] == '.' ||
+                    text[nspos] == '-' ||
+                    text[nspos] == '_' ||
+                    text[nspos] == '@' ||
+                    text[nspos] == '{' ||
+                    text[nspos] == '}' ||
+                    text[nspos] == '|')
+            {
+                lastspace = nspos+1;
+                wssize += mSizes[c]+2;
+                nssize++;
+            }
+            else
+            {
+                wssize += mSizes[c]+2;
+                nssize++;
+            }
+
+            if(wsize > w || text[nspos] == '\n')
+            {
+                if(lastspace == spos) // no spaces
+                    lastspace = nspos;
+                nspos = lastspace;
+
+                /*if(text[nspos] != ' ' && text[nspos] != '\t' && text[nspos] != '\n')
+                {
+                    wssize -= mSizes[c]+2;
+                    nssize--;
+                }*/
+
+                if(text[nspos] != ' ' && text[nspos] != '\t')
+                {
+                    // ok if this char isn't space, then we should skip it and see if we have any spaces preceding it
+                    for(size_t j = nspos-1; j > 0; j--)
+                    {
+                        if(text[j] == ' ' || text[j] == '\t')
+                        {
+                            lastspace--;
+                            spacecnt--;
+                            skipcnt++;
+                        }
+                        else break;
+                    }
+                }
+
+                break;
+            }
+        }
+
+        if(nspos >= text.length())
+        {
+            lastspace = nspos = text.length();
+        }
+
+        spos = lastspace+skipcnt;
+        retval++;
+    }
+
+    return retval;
+}
+
 void LoadFonts()
 {
     C_Printf("LoadFonts: Initializing fonts...\n");

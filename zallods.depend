@@ -582,7 +582,7 @@
 	<list>
 	<SDL/SDL.h>
 
-1387895510 source:/home/zzyzx/dev/zallods/g_main.cpp
+1387979299 source:/home/zzyzx/dev/zallods/g_main.cpp
 	"g_main.h"
 	"g_event.h"
 	"g_screen.h"
@@ -670,7 +670,7 @@
 
 1382542857 /home/zzyzx/dev/zallods/r_blur.h
 
-1387469880 source:/home/zzyzx/dev/zallods/f_font.cpp
+1387978839 source:/home/zzyzx/dev/zallods/f_font.cpp
 	"f_font.h"
 	"c_main.h"
 	"f_file.h"
@@ -680,12 +680,12 @@
 	"r_main.h"
 	"v_main.h"
 
-1387283186 /home/zzyzx/dev/zallods/f_font.h
+1387978679 /home/zzyzx/dev/zallods/f_font.h
 	<SDL/SDL.h>
 	"String.h"
 	"f_sprite.h"
 
-1387978439 source:/home/zzyzx/dev/zallods/g_wm.cpp
+1387979271 source:/home/zzyzx/dev/zallods/g_wm.cpp
 	"g_wm.h"
 	"f_256.h"
 	"v_main.h"
@@ -694,8 +694,9 @@
 	"r_blur.h"
 	"c_main.h"
 	"g_wmex.h"
+	"f_font.h"
 
-1387896791 /home/zzyzx/dev/zallods/g_wm.h
+1387979222 /home/zzyzx/dev/zallods/g_wm.h
 	<SDL/SDL.h>
 	<vector>
 	"String.h"

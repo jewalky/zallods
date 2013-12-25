@@ -22,6 +22,9 @@ class Font
         void display(const SDL_Rect& rect, String text, Align align, uint8_t r = 255, uint8_t g = 255, uint8_t b = 255, int16_t shadowpos = 0x7FFF);
 
         uint32_t measureWidth(String text, Align align);
+        uint32_t measureHeight(const SDL_Rect& rect, String text);
+        uint32_t measureHeight(uint16_t width, String text);
+        uint32_t measureLines(uint16_t width, String text);
 
         char convertEncoding(char c);
 
