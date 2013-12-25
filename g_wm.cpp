@@ -106,6 +106,8 @@ bool Window::advanceTabOrder()
                 if((*children)[i]->isFocusable())
                 {
                     (*children)[i]->focus();
+                    if(mTabChild == NULL)
+                        mTabChild = (*children)[i];
                     children = &(*children)[i]->mChildren;
                     anyFound = true;
                     break;
@@ -114,7 +116,6 @@ bool Window::advanceTabOrder()
 
             if(!anyFound) break;
         }
-
 
         return true;
     }
@@ -351,7 +352,9 @@ void ToplevelWindow::show()
     R_UpdateRect(r_clip);
     resetTabOrder();
     advanceTabOrder();
+    C_Printf("ToplevelWindow::show()\n");
     Window::show();
+    C_Printf("ToplevelWindow::show() exited\n");
 }
 
 void ToplevelWindow::hide()
