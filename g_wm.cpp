@@ -128,6 +128,10 @@ bool Window::advanceTabOrder()
             else if(i+1 < mChildren.size())
             {
                 mTabChild = mChildren[i+1];
+
+                if(!mTabChild->isFocusable())
+                    continue;
+
                 mTabChild->focus();
                 return true;
             }
@@ -379,7 +383,8 @@ void ToplevelWindow::process(const Event& e)
 
     for(size_t i = 0; i < mChildren.size(); i++)
     {
-        if(mChildren[i]->isFocusable() && mChildren[i]->isFocused())
+        if((e.type != Event::KeyboardEvent && e.type != Event::TextEvent) ||
+           (mChildren[i]->isFocusable() && mChildren[i]->isFocused()))
             mChildren[i]->process(e);
     }
 }
