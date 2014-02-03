@@ -1,10 +1,11 @@
-#include "String.h"
+#include "String.hpp"
+#include "core.hpp"
 #include <cstring>
 #include <cstdarg>
 #include <cstdio>
 #include <cstdlib>
 
-String String::format(const String& format, ...)
+String String::formatRaw(const String& format, ...)
 {
     va_list va;
     va_start(va, format);
@@ -184,4 +185,11 @@ String String::trimRight(bool (callback)(char))
         return ret;
     }
     return "";
+}
+
+void String::replace(const String& what, const String& withWhat)
+{
+    size_t where;
+    while((where = find(what)) != npos)
+        std::string::replace(where, what.length(), withWhat);
 }
