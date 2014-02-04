@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="String.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="33" topLine="0" />
+	</File>
+	<File name="String.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="578" topLine="3" />
+	</File>
+	<File name="config.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="98" topLine="0" />
+	</File>
+	<File name="core.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="604" topLine="0" />
+	</File>
+	<File name="core.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="9039" topLine="273" />
+	</File>
+	<File name="display.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="849" topLine="0" />
+	</File>
+	<File name="events.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="3487" topLine="78" />
+	</File>
+	<File name="game.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="590" topLine="0" />
+	</File>
+	<File name="game.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="112" topLine="0" />
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1142" topLine="5" />
+	</File>
+	<File name="sys_graphics.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="90" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

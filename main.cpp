@@ -1,6 +1,8 @@
 #include "core.hpp"
 #include "config.hpp"
 #include "display.hpp"
+#include "game.hpp"
+#include "shaders.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -45,10 +47,19 @@ int main(int argc, char* argv[])
             core::printf(" - Failed.%n");
             return 1;
         }
+
+        core::printf(" * Initializing shaders...%n");
+        if(!shaders::init())
+        {
+            core::printf(" - Failed.%n");
+            return 1;
+        }
     }
 
     core::printf(" * Initializing resources...%n");
     core::printf(" * Entering main loop...%n");
+    game::loop();
+
     core::printf(" * Exiting.%n");
     return 0;
 }

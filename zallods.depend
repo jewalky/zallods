@@ -1,8 +1,10 @@
 # depslib dependency file v1.0
-1391430134 source:/home/zzyzx/dev/zallods/main.cpp
+1391514376 source:/home/zzyzx/dev/zallods/main.cpp
 	"core.hpp"
 	"config.hpp"
 	"display.hpp"
+	"game.hpp"
+	"shaders.hpp"
 
 1391415874 source:/home/zzyzx/dev/zallods/String.cpp
 	"String.hpp"
@@ -12,42 +14,48 @@
 	<cstdio>
 	<cstdlib>
 
-1385564146 /home/zzyzx/dev/zallods/String.hpp
+1391515509 /home/zzyzx/dev/zallods/String.hpp
 	<string>
 	<vector>
 	<cstdarg>
+	<cstdio>
 
-1391429324 /home/zzyzx/dev/zallods/core.hpp
+1391525076 /home/zzyzx/dev/zallods/core.hpp
 	"String.hpp"
 	<iostream>
 
-1391429679 source:/home/zzyzx/dev/zallods/core.cpp
+1391522974 source:/home/zzyzx/dev/zallods/core.cpp
 	"core.hpp"
 
-1391429594 source:/home/zzyzx/dev/zallods/config.cpp
+1391516043 source:/home/zzyzx/dev/zallods/config.cpp
 	"config.hpp"
 
 1391429605 /home/zzyzx/dev/zallods/config.hpp
 	<cstdint>
 
-1391434316 source:/home/zzyzx/dev/zallods/display.cpp
+1391535570 source:/home/zzyzx/dev/zallods/display.cpp
 	"config.hpp"
 	"display.hpp"
 	"sys_graphics.hpp"
 	"events.hpp"
+	"core.hpp"
+	"shaders.hpp"
+	<cmath>
 
-1391432221 /home/zzyzx/dev/zallods/display.hpp
+1391535486 /home/zzyzx/dev/zallods/display.hpp
 	<cstdint>
 
-1391432522 source:/home/zzyzx/dev/zallods/game.cpp
+1391434530 source:/home/zzyzx/dev/zallods/game.cpp
 	"config.hpp"
 	"display.hpp"
 	"game.hpp"
 	"sys_graphics.hpp"
+	"events.hpp"
 
-1391430013 /home/zzyzx/dev/zallods/game.hpp
+1391434460 /home/zzyzx/dev/zallods/game.hpp
 
-1391415778 /home/zzyzx/dev/zallods/sys_graphics.hpp
+1391512372 /home/zzyzx/dev/zallods/sys_graphics.hpp
+	<GL/glew.h>
 	<GL/gl.h>
 	<SDL/SDL.h>
 
@@ -57,4 +65,15 @@
 
 1391434188 /home/zzyzx/dev/zallods/events.hpp
 	<SDL/SDL.h>
+
+1391516000 source:/home/zzyzx/dev/zallods/shaders.cpp
+	"shaders.hpp"
+	<fstream>
+	"core.hpp"
+	"display.hpp"
+
+1391516023 /home/zzyzx/dev/zallods/shaders.hpp
+	"sys_graphics.hpp"
+	"String.hpp"
+	<cstdint>
 
