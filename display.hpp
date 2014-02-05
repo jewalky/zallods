@@ -9,8 +9,9 @@ namespace display
     bool init();
     void refresh();
     void project(int32_t x, int32_t y, uint16_t w, uint16_t h);
+    void abort();
 
-    void lens_distort(int16_t x, int16_t y, uint16_t w, bool inverted);
+    void lens_distort(int16_t x, int16_t y, uint16_t w, bool inverted, float power);
 }
 
 #endif // DISPLAY_HPP_INCLUDED

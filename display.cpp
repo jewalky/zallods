@@ -3,8 +3,8 @@
 #include "sys_graphics.hpp"
 #include "events.hpp"
 #include "core.hpp"
-#include "shaders.hpp"
 #include <cmath>
+#include "image.hpp"
 
 namespace display
 {
@@ -61,6 +61,8 @@ namespace display
         return true;
     }
 
+    Image* img = 0;
+
     float loc = 0;
     void refresh()
     {
@@ -72,48 +74,8 @@ namespace display
 
         glClear(GL_COLOR_BUFFER_BIT);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        //shaders::palette.activate();
-/*
-        for(int i = 0; i < 6; i++)
-        {
-            glColor4ub(255, 255, 255, 127);
-            glBegin(GL_QUADS);
-                glVertex2i(i*32+32, i*32+32);
-                glVertex2i(i*32+64, i*32+32);
-                glVertex2i(i*32+64, i*32+64);
-                glVertex2i(i*32+32, i*32+64);
-            glEnd();
-        }
-*/
 
-        glColor4ub(255, 255, 255, 255);
-        glBegin(GL_QUADS);
-            glVertex2i(loc+0, 0);
-            glVertex2i(loc+640, 0);
-            glVertex2i(loc+640, 480);
-            glVertex2i(loc+0, 480);
-        glEnd();
 
-        glColor4ub(128, 128, 128, 255);
-        glBegin(GL_QUADS);
-            glVertex2i(loc+16, 16);
-            glVertex2i(loc+640, 16);
-            glVertex2i(loc+640, 480);
-            glVertex2i(loc+16, 480);
-        glEnd();
-
-        glColor4ub(32, 32, 32, 255);
-        glBegin(GL_QUADS);
-            glVertex2i(loc+32, 32);
-            glVertex2i(loc+640, 32);
-            glVertex2i(loc+640, 480);
-            glVertex2i(loc+32, 480);
-        glEnd();
-
-        //lens_distort(48, 48, 32, 32);
-        lens_distort(events::mouse_x()-16, events::mouse_y()-16, 32, false);
-
-        //shaders::palette.deactivate();
 
         SDL_GL_SwapBuffers();
     }
@@ -136,9 +98,12 @@ namespace display
     #define POINTS 16
     #define LEVELS 16
 
+    // POINTS = 16, LEVELS = 16, lens_distort(x, y, 32, false, 3);
+    // приблизительно похоже на искажения, получающиеся при выстреле летучей мыши
+    // остальное тоже можно зачем-нибудь использовать.
     GLuint lens_distort_texture = 0;
     uint32_t lens_distort_context = 0;
-    void lens_distort(int16_t x, int16_t y, uint16_t w, bool inverted)
+    void lens_distort(int16_t x, int16_t y, uint16_t w, bool inverted, float power)
     {
         if(w > 1024)
             return;
@@ -210,7 +175,9 @@ namespace display
                 float xnew = Texp * c;
                 float ynew = Texp * s;
 
-                float Xdist = (inverted ? (xcenter * j) : (xcenter - xcenter * j));
+                float _pow = xcenter * j * power;
+
+                float Xdist = (inverted ? (_pow) : (xcenter - _pow));
 
                 float Txnew = Xdist * c;
                 float Tynew = Xdist * s;
@@ -255,19 +222,7 @@ namespace display
                 glVertex2i(x+xp[i+1], y+yp[i+1]);
             }
             glEnd();
-/*
-            glBindTexture(GL_TEXTURE_RECTANGLE_ARB, 0);
-            glBegin(GL_LINES);
-            for(int i = 0; i < 8; i++)
-            {
-                glColor4ub(255, 255, 255, 255);
-                glVertex2i(x+Pxp[i+1], y+Pyp[i+1]);
-                glVertex2i(x+Pxp[i], y+Pyp[i]);
-                glVertex2i(x+xp[i], y+yp[i]);
-                glVertex2i(x+xp[i+1], y+yp[i+1]);
-            }
-            glEnd();
-*/
+
             for(int i = 0; i < POINTS+1; i++)
             {
                 PTxp[i] = Txp[i];
@@ -278,5 +233,14 @@ namespace display
         }
 
         glBindTexture(GL_TEXTURE_RECTANGLE_ARB, 0);
+    }
+
+    void abort()
+    {
+        if(surface)
+        {
+            SDL_FreeSurface(surface);
+            SDL_Quit();
+        }
     }
 }

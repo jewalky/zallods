@@ -2,7 +2,6 @@
 #include "config.hpp"
 #include "display.hpp"
 #include "game.hpp"
-#include "shaders.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -43,13 +42,6 @@ int main(int argc, char* argv[])
     {
         core::printf(" * Initializing display (at %ux%ux32)...%n", config::display::width, config::display::height);
         if(!display::init())
-        {
-            core::printf(" - Failed.%n");
-            return 1;
-        }
-
-        core::printf(" * Initializing shaders...%n");
-        if(!shaders::init())
         {
             core::printf(" - Failed.%n");
             return 1;

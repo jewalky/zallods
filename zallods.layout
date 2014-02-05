@@ -10,16 +10,19 @@
 	<File name="config.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="98" topLine="0" />
 	</File>
-	<File name="core.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="604" topLine="0" />
+	<File name="core.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="42" topLine="0" />
 	</File>
-	<File name="core.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="9039" topLine="273" />
+	<File name="core.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="11546" topLine="316" />
 	</File>
-	<File name="display.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="849" topLine="0" />
+	<File name="display.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="2729" topLine="80" />
 	</File>
-	<File name="events.cpp" open="0" top="0" tabpos="0">
+	<File name="display.hpp" open="1" top="0" tabpos="5">
+		<Cursor position="331" topLine="0" />
+	</File>
+	<File name="events.cpp" open="1" top="0" tabpos="8">
 		<Cursor position="3487" topLine="78" />
 	</File>
 	<File name="game.cpp" open="0" top="0" tabpos="0">
@@ -28,8 +31,14 @@
 	<File name="game.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="112" topLine="0" />
 	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1142" topLine="5" />
+	<File name="image.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="1993" topLine="33" />
+	</File>
+	<File name="image.hpp" open="1" top="0" tabpos="6">
+		<Cursor position="692" topLine="0" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1256" topLine="7" />
 	</File>
 	<File name="sys_graphics.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="90" topLine="0" />

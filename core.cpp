@@ -1,4 +1,5 @@
 #include "core.hpp"
+#include "display.hpp"
 
 namespace core
 {
@@ -51,5 +52,12 @@ namespace core
         if(index >= argc())
             return String::null();
         return argv[index];
+    }
+
+    void abort()
+    {
+        display::abort();
+        core::printf(" ! Execution aborted.%n");
+        exit(1);
     }
 }

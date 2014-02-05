@@ -361,6 +361,8 @@ namespace core
     String arg(size_t index);
     String sub_arg(String arg, size_t index);
     bool has_arg(String arg);
+
+    void abort();
 }
 
 #endif // CORE_HPP_INCLUDED
